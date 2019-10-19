@@ -1,0 +1,26 @@
+{
+  "name": "node-raspivid",
+  "version": "0.0.1",
+  "description": "node wrapper for raspbian os raspivid util",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dlukanin/node-raspivid.git"
+  },
+  "keywords": [
+    "raspberry",
+    "raspbian",
+    "iot",
+    "pi",
+    "typescript"
+  ],
+  "author": "Dmitry Lukanin (dylukanin@gmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dlukanin/node-raspivid/issues"
+  },
+  "homepage": "https://github.com/dlukanin/node-raspivid#readme"
+}

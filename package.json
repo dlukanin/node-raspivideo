@@ -3,8 +3,10 @@
   "version": "0.0.1",
   "description": "node wrapper for raspbian os raspivid util",
   "main": "build/index.js",
+  "types": "build/index.d.ts",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "rm -rf ./build && tsc --project tsconfig.json"
   },
   "repository": {
     "type": "git",
@@ -24,6 +26,7 @@
   },
   "homepage": "https://github.com/dlukanin/node-raspivid#readme",
   "devDependencies": {
+    "@types/node": "^12.11.1",
     "jest": "^24.9.0",
     "ts-jest": "^24.1.0",
     "typescript": "^3.7.0-beta"

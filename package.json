@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/dlukanin/node-raspivid#readme",
   "devDependencies": {
+    "@types/jest": "^24.0.20",
     "@types/node": "^12.11.1",
     "jest": "^24.9.0",
     "ts-jest": "^24.1.0",

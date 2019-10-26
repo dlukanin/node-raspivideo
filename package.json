@@ -6,7 +6,8 @@
   "types": "build/index.d.ts",
   "scripts": {
     "test": "jest",
-    "build": "rm -rf ./build && tsc --project tsconfig.json"
+    "build": "rm -rf ./build && tsc --project tsconfig.json",
+    "lint": "eslint src/*.ts"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,9 @@
   "devDependencies": {
     "@types/jest": "^24.0.20",
     "@types/node": "^12.11.1",
+    "@typescript-eslint/eslint-plugin": "^2.5.0",
+    "@typescript-eslint/parser": "^2.5.0",
+    "eslint": "^6.6.0",
     "jest": "^24.9.0",
     "ts-jest": "^24.1.0",
     "typescript": "^3.7.0-beta"

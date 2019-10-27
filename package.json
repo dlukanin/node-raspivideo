@@ -2,12 +2,13 @@
   "name": "node-raspivid",
   "version": "0.0.1",
   "description": "node wrapper for raspbian os raspivid util",
-  "main": "build/index.js",
-  "types": "build/index.d.ts",
+  "main": "build/src/index.js",
+  "types": "build/src/index.d.ts",
   "scripts": {
-    "test": "jest",
+    "test": "jest --runInBand --forceExit",
     "build": "rm -rf ./build && tsc --project tsconfig.json",
-    "lint": "eslint src/*.ts"
+    "lint": "eslint src/*.ts",
+    "pretest": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -33,6 +34,7 @@
     "@typescript-eslint/parser": "^2.5.0",
     "eslint": "^6.6.0",
     "jest": "^24.9.0",
+    "rimraf": "^3.0.0",
     "ts-jest": "^24.1.0",
     "typescript": "^3.7.0-beta"
   }

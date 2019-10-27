@@ -1,8 +1,5 @@
 export interface IWatcherOptions {
-    /**
-     * Time in ms. Watcher watches file for expireTime ms.
-     */
-    expireTime?: number;
+    // TODO
 }
 
 /**
@@ -16,9 +13,4 @@ export interface IWatcher {
      * @param filePath
      */
     watchAndGetFile(filePath: string): Promise<Buffer>;
-
-    /**
-     * Closes current running fs watcher.
-     */
-    tryToStop(): void;
 }

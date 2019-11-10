@@ -1,6 +1,7 @@
 import {IConverter} from './converter.interface';
 import * as ffmpeg from 'fluent-ffmpeg';
 import * as path from "path";
+import {ConverterError} from './error/converter.error';
 
 export class H264ToMp4Converter implements IConverter {
     public readonly convertedFilePostfix: string = '_converted';
@@ -21,7 +22,11 @@ export class H264ToMp4Converter implements IConverter {
             });
 
             command.on('error', (err) => {
-                reject(err);
+                reject(new ConverterError(
+                    this.constructor,
+                    fileName,
+                    err
+                ));
             })
         })
     }

@@ -1,5 +1,6 @@
 import {H264ToMp4Converter} from '../src/converter/h264-to-mp4.converter';
 import * as fs from 'fs';
+import {ConverterError} from '../src/converter/error/converter.error';
 
 const videosDir = __dirname + '/videos';
 const fileName = 'sample';
@@ -28,5 +29,21 @@ describe('H264ToMp4Converter', () => {
         await converter.convert(originalFilePath);
 
         await fs.promises.stat(convertedFilePath);
+    });
+
+    it('should throw converter error when something bad happens (no file found)', async () => {
+        let err;
+
+        try {
+            await converter.convert(videosDir + '/nothing-here.h264');
+        } catch (e) {
+            err = e;
+        }
+
+        expect(err).toBeInstanceOf(ConverterError);
+
+        expect(err.info.converterClass).toEqual(H264ToMp4Converter);
+        expect(err.info.fileName).toEqual('nothing-here.h264');
+        expect(err.info.originalErr).toBeInstanceOf(Error);
     });
 });

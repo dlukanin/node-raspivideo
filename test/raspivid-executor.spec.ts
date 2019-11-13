@@ -6,18 +6,31 @@ import { EventEmitter } from 'events';
 
 const filesDir = './files';
 
+function getFake(): EventEmitter {
+    const fake: any = new EventEmitter();
+
+    fake.stderr = new EventEmitter();
+
+    return fake;
+}
+
 describe('Executor', () => {
     let ex;
-    let spawnSpy;
 
     beforeEach(async () => {
         ex = new RaspividExecutor();
+    });
 
-        spawnSpy = spyOn(childProcess, 'spawn')
+    afterEach(async () => {
+        await rmrf(filesDir);
+    });
+
+    it('should spawn proc and resolve', (done) => {
+        const args = ['test', '1'];
+
+        const spawnSpy = spyOn(childProcess, 'spawn')
             .and.callFake((command, args) => {
-                const fake: any = new EventEmitter();
-
-                fake.stderr = new EventEmitter();
+                const fake = getFake();
 
                 setTimeout(() => {
                     fake.emit('exit');
@@ -25,14 +38,6 @@ describe('Executor', () => {
 
                 return fake;
             });
-    });
-
-    afterEach(async () => {
-        await rmrf(filesDir);
-    });
-
-    it('should spawn proc', (done) => {
-        const args = ['test', '1'];
 
         ex.exec(args).then(() => {
             const recentArgs = spawnSpy.calls.mostRecent().args;
@@ -40,6 +45,42 @@ describe('Executor', () => {
             expect(recentArgs[0]).toBe('raspivid');
             expect(recentArgs[1]).toStrictEqual(args);
 
+            done();
+        });
+    });
+
+    it('should spawn proc and reject', (done) => {
+        spyOn(childProcess, 'spawn')
+            .and.callFake((command, args) => {
+                const fake: any = getFake();
+
+                setTimeout(() => {
+                    fake.emit('error', {});
+                    fake.emit('exit');
+                }, 0);
+
+                return fake;
+            });
+
+        ex.exec([]).catch(() => {
+            done();
+        });
+    });
+
+    it('should spawn proc and reject (proc stderr)', (done) => {
+        spyOn(childProcess, 'spawn')
+            .and.callFake((command, args) => {
+                const fake: any = getFake();
+
+                setTimeout(() => {
+                    fake.stderr.emit('data', Buffer.alloc(1));
+                    fake.emit('exit');
+                }, 0);
+
+                return fake;
+            });
+
+        ex.exec([]).catch(() => {
             done();
         });
     });

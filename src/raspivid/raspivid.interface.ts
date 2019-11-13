@@ -8,6 +8,7 @@ export interface IRaspividOptions {
     fps: number;
     bitrate: number;
     format: 'h264' | 'mp4';
+    videoFolder: string;
 }
 
 export interface IRaspivid {
@@ -16,5 +17,5 @@ export interface IRaspivid {
 
     setOptions(options: Partial<IRaspividOptions>);
 
-    record(options: IRaspividOptions): Promise<void>;
+    record(videoName: string, options: IRaspividOptions): Promise<void>;
 }

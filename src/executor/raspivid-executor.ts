@@ -6,7 +6,7 @@ export class RaspividExecutor implements IRaspividExecutor {
 
     public async exec(args: string[]): Promise<void> {
         let error: Error;
-        let errorBuffer: Buffer = new Buffer(0);
+        let errorBuffer: Buffer = Buffer.alloc(0);
 
         return new Promise((resolve, reject) => {
             const childProcess = process.spawn(this._command, args);

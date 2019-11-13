@@ -9,4 +9,10 @@ module.exports = {
     parserOptions: {
         project: './tsconfig.json'
     },
+    rules: {
+        '@typescript-eslint/interface-name-prefix': ['error', {
+            prefixWithI: 'always'
+        }],
+        "no-console": "error",
+    }
 };

@@ -5,7 +5,7 @@ export class RaspividExecutor implements IRaspividExecutor {
     private readonly _command: string = 'raspivid';
 
     public async exec(args: string[]): Promise<void> {
-        let error: any;
+        let error: Error;
         let errorBuffer: Buffer = new Buffer(0);
 
         return new Promise((resolve, reject) => {

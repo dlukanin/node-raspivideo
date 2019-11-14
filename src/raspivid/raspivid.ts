@@ -4,12 +4,14 @@ import {RaspividExecutor} from '../executor/raspivid-executor';
 import {IWatcher} from '../watcher/watcher.interface';
 import {Watcher} from '../watcher/watcher';
 import {ConverterFactory} from '../converter/converter.factory';
+import {RaspividOptionsParser} from '../options-parser/raspivid.options-parser';
 
 export class Raspivid implements IRaspivid {
     constructor(
         protected readonly _executor: IRaspividExecutor = new RaspividExecutor(),
         protected readonly _watcher: IWatcher = new Watcher(),
-        protected readonly _converterFactory = new ConverterFactory()
+        protected readonly _converterFactory = new ConverterFactory(),
+        protected readonly _optionsParser = new RaspividOptionsParser()
     ) {
 
     }
@@ -26,8 +28,17 @@ export class Raspivid implements IRaspivid {
     };
     public readonly options: IRaspividOptions;
 
-    public record(videoName: string, time: number, options: IRaspividOptions): Promise<void> {
-        return undefined;
+    public async record(videoName: string, time: number, options: IRaspividOptions): Promise<void> {
+        const fileName = videoName.replace('.h264', '') + '.h264';
+
+        const output = this.options.videoFolder + '/' + fileName;
+
+        await Promise.all([
+            this._executor.exec(this._optionsParser.getCommandLineArgs(Object.assign({}, {output}, this.options))),
+            this._watcher.watch(output)
+        ]);
+
+        await this._converterFactory.getConverter(this.options.format).convert(output)
     }
 
     public setOptions(options: Partial<IRaspividOptions>) {

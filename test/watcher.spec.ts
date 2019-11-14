@@ -5,7 +5,7 @@ import * as fs from 'fs';
 const filesDir = './files';
 
 describe('Watcher', () => {
-    let watcher;
+    let watcher: Watcher;
 
     beforeEach(async () => {
         await rmrf(filesDir);
@@ -20,7 +20,7 @@ describe('Watcher', () => {
         const filePath = filesDir + '/test.h264';
 
         // NOTE in this case we do not need to handle promise result
-        watcher.watchAndGetFile(filePath);
+        watcher.watch(filePath);
 
         await fs.promises.access(filesDir);
     });
@@ -30,17 +30,16 @@ describe('Watcher', () => {
         const filePath = recFilesDir + '/test.h264';
 
         // NOTE in this case we do not need to handle promise result
-        watcher.watchAndGetFile(filePath);
+        watcher.watch(filePath);
 
         await fs.promises.access(recFilesDir);
     });
 
-    it('should watch and return file', async (done) => {
+    it('should watch and resolve', async (done) => {
         const filePath = filesDir + '/test.h264';
 
-        watcher.watchAndGetFile(filePath)
-            .then((buf) => {
-                expect(buf).toBeInstanceOf(Buffer);
+        watcher.watch(filePath)
+            .then(() => {
                 done();
             })
             .catch((err) => {

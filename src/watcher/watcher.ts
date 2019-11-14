@@ -19,7 +19,7 @@ export class Watcher implements IWatcher {
         this.options = options || this._defaultOptions;
     }
 
-    public async watchAndGetFile(filePath: string): Promise<Buffer> {
+    public async watch(filePath: string): Promise<void> {
         const dirName = path.dirname(filePath);
         const fileName = path.basename(filePath);
 
@@ -42,8 +42,6 @@ export class Watcher implements IWatcher {
                 }
             });
         });
-
-        return await fs.promises.readFile(filePath);
     }
 
     private _makeDir(dirName: string): void {

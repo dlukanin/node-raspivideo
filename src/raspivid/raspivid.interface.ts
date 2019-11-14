@@ -2,11 +2,12 @@ export interface IRaspividOptions {
     /**
      * Amount of ms to record.
      */
-    time: number;
     width: number;
     height: number;
     fps: number;
     bitrate: number;
+    verticalFlip: boolean;
+    horizontalFlip: boolean;
     format: 'h264' | 'mp4';
     videoFolder: string;
 }
@@ -17,5 +18,5 @@ export interface IRaspivid {
 
     setOptions(options: Partial<IRaspividOptions>);
 
-    record(videoName: string, options: IRaspividOptions): Promise<void>;
+    record(videoName: string, time: number, options: IRaspividOptions): Promise<void>;
 }

@@ -14,7 +14,27 @@ export class RaspividOptionsParser implements IOptionsParser {
         videoFolder: undefined,
     };
 
-    public getCommandLineArgs(options: IRaspividOptions): string[] {
-        return [];
+    public getCommandLineArgs(options: Partial<IRaspividOptions>): string[] {
+        const args = [];
+
+        Object.entries(options).forEach((entry) => {
+            const key = entry[0];
+            const value = entry[1];
+
+            const arg = this._optionMap[key];
+
+            if (arg) {
+                if (typeof value === 'boolean') {
+                    if (value) {
+                        args.push(arg);
+                    }
+                } else {
+                    args.push(arg);
+                    args.push(value.toString())
+                }
+            }
+        });
+
+        return args;
     }
 }

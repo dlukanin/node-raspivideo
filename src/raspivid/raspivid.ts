@@ -20,7 +20,9 @@ export class Raspivid implements IRaspivid {
         fps: 24,
         bitrate: 1200000,
         format: 'mp4',
-        videoFolder: './videos'
+        videoFolder: './videos',
+        verticalFlip: true,
+        horizontalFlip: true
     };
     public readonly options: IRaspividOptions;
 

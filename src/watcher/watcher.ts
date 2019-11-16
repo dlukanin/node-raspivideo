@@ -25,7 +25,7 @@ export class Watcher implements IWatcher {
 
         this._makeDir(dirName);
 
-        await new Promise((resolve, reject) => {
+        await new Promise((resolve) => {
             this._watcher = fs.watch(dirName, async (eventType: string, changedFileName: string) => {
                 if ((
                         eventType === Watcher.EVENT_RENAME ||

@@ -34,14 +34,16 @@ export class Raspivid implements IRaspivid {
         const output = this.options.videoFolder + '/' + fileName;
 
         await Promise.all([
-            this._executor.exec(this._optionsParser.getCommandLineArgs(Object.assign({}, {output}, this.options))),
+            this._executor.exec(this._optionsParser.getCommandLineArgs(
+                Object.assign({}, {output, time}, this.options))
+            ),
             this._watcher.watch(output)
         ]);
 
-        await this._converterFactory.getConverter(this.options.format).convert(output)
+        await this._converterFactory.getConverter(this.options.format).convert(output);
     }
 
-    public setOptions(options: Partial<IRaspividOptions>) {
+    public setOptions(options: Partial<IRaspividOptions>): void {
         Object.assign(this.options, options);
     }
 

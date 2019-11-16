@@ -10,6 +10,7 @@ export class RaspividOptionsParser implements IOptionsParser {
         verticalFlip: '-vf',
         horizontalFlip: '-hf',
         output: '-o',
+        time: '-t',
 
         format: undefined,
         videoFolder: undefined,

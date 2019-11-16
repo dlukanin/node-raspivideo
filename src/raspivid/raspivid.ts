@@ -1,6 +1,6 @@
 import {IRaspivid, IRaspividOptions} from './raspivid.interface';
-import {IRaspividExecutor} from '../executor/raspivid-executor.interface';
-import {RaspividExecutor} from '../executor/raspivid-executor';
+import {IRaspividExecutor} from '../executor/raspivid.executor.interface';
+import {RaspividExecutor} from '../executor/raspivid.executor';
 import {IWatcher} from '../watcher/watcher.interface';
 import {Watcher} from '../watcher/watcher';
 import {ConverterFactory} from '../converter/converter.factory';

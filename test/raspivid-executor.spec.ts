@@ -1,6 +1,6 @@
 import {Watcher} from '../src/watcher/watcher';
 import {rmrf} from './helpers/rimraf';
-import {RaspividExecutor} from '../src/executor/raspivid-executor';
+import {RaspividExecutor} from '../src/executor/raspivid.executor';
 import * as childProcess from 'child_process';
 import { EventEmitter } from 'events';
 

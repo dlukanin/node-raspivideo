@@ -7,6 +7,11 @@ export class H264ToMp4Converter implements IConverter {
     public readonly convertedFilePostfix: string = '_converted';
     public readonly ex: string = '.mp4';
 
+    constructor() {
+        const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
+        ffmpeg.setFfmpegPath(ffmpegPath);
+    }
+
     public async convert(filePath: string): Promise<void> {
         const fileName = path.basename(filePath);
         const dirName = path.dirname(filePath);

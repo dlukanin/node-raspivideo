@@ -1,7 +1,7 @@
 {
   "name": "node-raspivid",
   "version": "0.0.1",
-  "description": "node wrapper for raspbian os raspivid util",
+  "description": "Node wrapper for raspbian os raspivid util",
   "main": "build/src/index.js",
   "types": "build/src/index.d.ts",
   "scripts": {

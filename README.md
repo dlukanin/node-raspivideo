@@ -1,6 +1,7 @@
 # node-raspivid
 
-WIP
+Wrapper for [raspivid](https://www.raspberrypi.org/documentation/usage/camera/raspicam/raspivid.md) tool
+for Raspbian OS. Typescript typedefs included.
 
 # License info
 Lib is MIT licensed.

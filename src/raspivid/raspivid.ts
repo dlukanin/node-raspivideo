@@ -5,15 +5,18 @@ import {IWatcher} from '../watcher/watcher.interface';
 import {Watcher} from '../watcher/watcher';
 import {ConverterFactory} from '../converter/converter.factory';
 import {RaspividOptionsParser} from '../options-parser/raspivid.options-parser';
+import {IConverterFactory} from '../converter/converter.factory.interface';
+import {IOptionsParser} from '../options-parser/options-parser.interface';
 
 export class Raspivid implements IRaspivid {
     constructor(
+        options: Partial<IRaspividOptions>,
         protected readonly _executor: IRaspividExecutor = new RaspividExecutor(),
         protected readonly _watcher: IWatcher = new Watcher(),
-        protected readonly _converterFactory = new ConverterFactory(),
-        protected readonly _optionsParser = new RaspividOptionsParser()
+        protected readonly _converterFactory: IConverterFactory = new ConverterFactory(),
+        protected readonly _optionsParser: IOptionsParser = new RaspividOptionsParser()
     ) {
-
+        this.setOptions(Object.assign({}, options, this.defaultOptions));
     }
 
     public readonly defaultOptions: IRaspividOptions = {

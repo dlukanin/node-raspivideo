@@ -20,7 +20,13 @@ export class Raspivid implements IRaspivid {
         verticalFlip: true,
         horizontalFlip: true
     };
-    public readonly options: IRaspividOptions;
+
+    public get options(): IRaspividOptions {
+        return this._options;
+    }
+
+    protected _options: IRaspividOptions;
+
     constructor(
         options: Partial<IRaspividOptions>,
         protected readonly _executor: IRaspividExecutor = new RaspividExecutor(),
@@ -34,20 +40,20 @@ export class Raspivid implements IRaspivid {
     public async record(videoName: string, time: number, options: IRaspividOptions): Promise<void> {
         const fileName = videoName.replace('.h264', '') + '.h264';
 
-        const output = this.options.videoFolder + '/' + fileName;
+        const output = this._options.videoFolder + '/' + fileName;
 
         await Promise.all([
             this._executor.exec(this._optionsParser.getCommandLineArgs(
-                Object.assign({}, {output, time}, this.options, options))
+                Object.assign({}, {output, time}, this._options, options))
             ),
             this._watcher.watch(output, time + Math.floor(time * 0.5))
         ]);
 
-        await this._converterFactory.getConverter(this.options.format).convert(output);
+        await this._converterFactory.getConverter(this._options.format).convert(output);
     }
 
     public setOptions(options: Partial<IRaspividOptions>): void {
-        Object.assign(this.options, options);
+        this._options = Object.assign({}, this.options, options);
     }
 
 }

@@ -16,7 +16,7 @@ export interface IRaspivid {
     readonly defaultOptions: IRaspividOptions;
     readonly options: IRaspividOptions;
 
-    setOptions(options: Partial<IRaspividOptions>);
+    setOptions(options: Partial<IRaspividOptions>): void;
 
     record(videoName: string, time: number, options: IRaspividOptions): Promise<void>;
 }

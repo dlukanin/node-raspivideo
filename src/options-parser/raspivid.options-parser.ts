@@ -13,7 +13,7 @@ export class RaspividOptionsParser implements IOptionsParser {
         time: '-t',
 
         format: undefined,
-        videoFolder: undefined,
+        videoFolder: undefined
     };
 
     public getCommandLineArgs(options: Partial<IRaspividOptions>): string[] {
@@ -32,7 +32,7 @@ export class RaspividOptionsParser implements IOptionsParser {
                     }
                 } else {
                     args.push(arg);
-                    args.push(value.toString())
+                    args.push(value.toString());
                 }
             }
         });

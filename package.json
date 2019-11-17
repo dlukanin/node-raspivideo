@@ -7,7 +7,8 @@
   "scripts": {
     "test": "jest --runInBand --forceExit --coverage",
     "build": "rm -rf ./build && tsc --project tsconfig.json",
-    "lint": "eslint src/**/*.ts && eslint src/*.ts && eslint test/**/*.ts",
+    "lint": "tslint --fix src/**/*.ts && tslint src/**/*.ts",
+    "ci-lint": "tslint src/**/*.ts && tslint src/**/*.ts",
     "pretest": "npm run build"
   },
   "repository": {
@@ -31,12 +32,11 @@
     "@types/fluent-ffmpeg": "^2.1.11",
     "@types/jest": "^24.0.20",
     "@types/node": "^12.11.1",
-    "@typescript-eslint/eslint-plugin": "^2.5.0",
-    "@typescript-eslint/parser": "^2.5.0",
-    "eslint": "^6.6.0",
     "jest": "^24.9.0",
     "rimraf": "^3.0.0",
     "ts-jest": "^24.1.0",
+    "tslint": "^5.20.1",
+    "tslint-eslint-rules": "^5.4.0",
     "typescript": "^3.7.2"
   },
   "dependencies": {

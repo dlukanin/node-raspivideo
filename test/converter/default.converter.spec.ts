@@ -1,4 +1,4 @@
-import {DefaultConverter} from '../src/converter/default.converter';
+import {DefaultConverter} from '../../src/converter/default.converter';
 
 describe('DefaultConverter', () => {
     let converter: DefaultConverter;

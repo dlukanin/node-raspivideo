@@ -1,0 +1,27 @@
+{
+  "extends": "tslint:recommended",
+  "rulesDirectory": "node_modules/tslint-eslint-rules/dist/rules",
+  "rules": {
+    "quotemark": [true, "single"],
+    "eofline": false,
+    "ordered-imports": false,
+    "object-literal-sort-keys": false,
+    "trailing-comma": [true, {"multiline": "never", "singleline": "never"}],
+    "only-arrow-functions": false,
+    "no-shadowed-variable": false,
+    "variable-name": {
+      "options": [
+        "ban-keywords",
+        "check-format",
+        "allow-leading-underscore",
+        "allow-pascal-case"
+      ]
+    },
+    "typedef": [true,
+      "call-signature",
+      "parameter",
+      "property-declaration",
+      "member-variable-declaration"
+    ]
+  }
+}

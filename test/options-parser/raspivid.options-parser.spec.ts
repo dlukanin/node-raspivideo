@@ -1,4 +1,4 @@
-import {RaspividOptionsParser} from '../src/options-parser/raspivid.options-parser';
+import {RaspividOptionsParser} from '../../src/options-parser/raspivid.options-parser';
 
 describe('RaspividOptionsParser', () => {
     it('should construct DefaultConverter by default', () => {

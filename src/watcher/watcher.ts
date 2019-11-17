@@ -1,7 +1,7 @@
 import {IWatcher} from './watcher.interface';
-import * as path from "path";
-import * as fs from "fs";
-import {FSWatcher} from "fs";
+import * as path from 'path';
+import * as fs from 'fs';
+import {FSWatcher} from 'fs';
 import {WatcherTimeoutError} from './error/watcher-timeout.error';
 
 export class Watcher implements IWatcher {

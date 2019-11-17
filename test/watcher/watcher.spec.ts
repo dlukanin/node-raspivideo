@@ -1,7 +1,7 @@
-import {Watcher} from '../src/watcher/watcher';
-import {rmrf} from './helpers/rimraf';
+import {Watcher} from '../../src/watcher/watcher';
+import {rmrf} from '../helpers/rimraf';
 import * as fs from 'fs';
-import {WatcherTimeoutError} from '../src/watcher/error/watcher-timeout.error';
+import {WatcherTimeoutError} from '../../src/watcher/error/watcher-timeout.error';
 
 const filesDir = './files';
 

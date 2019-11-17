@@ -1,0 +1,11 @@
+src
+test
+coverage
+.eslintrc.js
+.gitignore
+.travis.yml
+CONTRIBUTING.md
+jest.config.js
+README.md
+tsconfig.json
+tslint.json

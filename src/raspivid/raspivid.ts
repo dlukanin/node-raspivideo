@@ -17,8 +17,8 @@ export class Raspivid implements IRaspivid {
         bitrate: 1200000,
         format: 'mp4',
         videoFolder: './videos',
-        verticalFlip: true,
-        horizontalFlip: true
+        verticalFlip: false,
+        horizontalFlip: false
     };
 
     public get options(): IRaspividOptions {

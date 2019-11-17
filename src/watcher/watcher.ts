@@ -17,6 +17,7 @@ export class Watcher implements IWatcher {
         const fileName = path.basename(filePath);
 
         this._makeDir(dirName);
+        this._unlink(dirName + '/' + fileName);
 
         await new Promise((resolve, reject) => {
             this._watcher = fs.watch(dirName, async (eventType: string, changedFileName: string) => {
@@ -48,6 +49,13 @@ export class Watcher implements IWatcher {
             if (err.code !== Watcher.EEXISTS) {
                 throw err;
             }
+        }
+    }
+    private _unlink(path: string): void {
+        try {
+            fs.unlinkSync(path);
+        } catch {
+            // do nothing
         }
     }
 }

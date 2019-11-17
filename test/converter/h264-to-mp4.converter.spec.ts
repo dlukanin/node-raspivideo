@@ -14,7 +14,6 @@ describe('H264ToMp4Converter', () => {
         converter = new H264ToMp4Converter();
         originalFilePath = videosDir + '/' + fileName + '.h264';
         convertedFilePath = videosDir + '/' + fileName + converter.convertedFilePostfix + converter.ex;
-
     });
 
     afterEach(async () => {

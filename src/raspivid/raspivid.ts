@@ -26,7 +26,7 @@ export class Raspivid implements IRaspivid {
     }
 
     protected _options: IRaspividOptions;
-    protected readonly _executorWatchTimeCoef: number = 5;
+    protected readonly _executorWatchTimeCoef: number = 100;
 
     constructor(
         options: Partial<IRaspividOptions>,

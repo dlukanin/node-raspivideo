@@ -1,16 +1,11 @@
-export interface IWatcherOptions {
-    // TODO
-}
-
 /**
  * Interface for file system watcher - helper for raspivid.
  */
 export interface IWatcher {
-    readonly options: IWatcherOptions;
-
     /**
      * Watches passed file path and resolves if file appeared.
      * @param filePath
+     * @param time
      */
-    watch(filePath: string): Promise<void>;
+    watch(filePath: string, time: number): Promise<void>;
 }

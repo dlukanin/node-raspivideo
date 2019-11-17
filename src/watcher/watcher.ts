@@ -1,7 +1,8 @@
-import {IWatcher, IWatcherOptions} from './watcher.interface';
+import {IWatcher} from './watcher.interface';
 import * as path from "path";
 import * as fs from "fs";
 import {FSWatcher} from "fs";
+import {WatcherTimeoutError} from './error/watcher-timeout.error';
 
 export class Watcher implements IWatcher {
     public static readonly ENOENT: string = 'ENOENT';
@@ -9,23 +10,15 @@ export class Watcher implements IWatcher {
     public static readonly EVENT_RENAME: string = 'rename';
     public static readonly EVENT_CHANGE: string = 'rename';
 
-    public readonly options: IWatcherOptions;
-
-    private readonly _defaultOptions: IWatcherOptions = {};
-
     private _watcher: FSWatcher;
 
-    constructor(options?: IWatcherOptions) {
-        this.options = options || this._defaultOptions;
-    }
-
-    public async watch(filePath: string): Promise<void> {
+    public async watch(filePath: string, time: number): Promise<void> {
         const dirName = path.dirname(filePath);
         const fileName = path.basename(filePath);
 
         this._makeDir(dirName);
 
-        await new Promise((resolve) => {
+        await new Promise((resolve, reject) => {
             this._watcher = fs.watch(dirName, async (eventType: string, changedFileName: string) => {
                 if ((
                         eventType === Watcher.EVENT_RENAME ||
@@ -37,10 +30,14 @@ export class Watcher implements IWatcher {
                     this._watcher.close();
 
                     resolve();
-
-                    // TODO timeout
                 }
             });
+
+            setTimeout(() => {
+                this._watcher.close();
+
+                reject(new WatcherTimeoutError(filePath, time));
+            }, time);
         });
     }
 

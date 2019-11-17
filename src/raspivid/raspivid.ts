@@ -37,7 +37,7 @@ export class Raspivid implements IRaspivid {
             this._executor.exec(this._optionsParser.getCommandLineArgs(
                 Object.assign({}, {output, time}, this.options))
             ),
-            this._watcher.watch(output)
+            this._watcher.watch(output, time + Math.floor(time * 0.5))
         ]);
 
         await this._converterFactory.getConverter(this.options.format).convert(output);

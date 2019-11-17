@@ -26,6 +26,7 @@ export class Raspivid implements IRaspivid {
     }
 
     protected _options: IRaspividOptions;
+    protected readonly _executorWatchTimeCoef: number = 5;
 
     constructor(
         options: Partial<IRaspividOptions>,
@@ -46,7 +47,7 @@ export class Raspivid implements IRaspivid {
             this._executor.exec(this._optionsParser.getCommandLineArgs(
                 Object.assign({}, {output, time}, this._options, options))
             ),
-            this._watcher.watch(output, time + Math.floor(time * 0.5))
+            this._watcher.watch(output, time + Math.floor(time * this._executorWatchTimeCoef))
         ]);
 
         await this._converterFactory.getConverter(this._options.format).convert(output);

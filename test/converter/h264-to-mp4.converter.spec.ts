@@ -2,7 +2,7 @@ import {H264ToMp4Converter} from '../../src/converter/h264-to-mp4.converter';
 import * as fs from 'fs';
 import {ConverterError} from '../../src/converter/error/converter.error';
 
-const videosDir = __dirname + '/videos';
+const videosDir = __dirname + '/../videos';
 const fileName = 'sample';
 
 describe('H264ToMp4Converter', () => {

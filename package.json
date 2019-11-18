@@ -2,14 +2,14 @@
   "name": "node-raspivideo",
   "version": "0.0.1",
   "description": "Node wrapper for raspbian os raspivid util",
-  "main": "build/src/index.js",
-  "types": "build/src/index.d.ts",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
   "scripts": {
-    "test": "jest --runInBand --forceExit --coverage",
+    "test": "jest --detectOpenHandles --runInBand --forceExit -c jest.config.js",
     "build": "rm -rf ./build && tsc --project tsconfig.json",
     "lint": "tslint --fix src/**/*.ts && tslint src/**/*.ts",
     "ci-lint": "tslint src/**/*.ts && tslint src/**/*.ts",
-    "pretest": "npm run build"
+    "coverage": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
@@ -32,6 +32,7 @@
     "@types/fluent-ffmpeg": "^2.1.11",
     "@types/jest": "^24.0.20",
     "@types/node": "^12.11.1",
+    "coveralls": "3.0.7",
     "jest": "^24.9.0",
     "rimraf": "^3.0.0",
     "ts-jest": "^24.1.0",

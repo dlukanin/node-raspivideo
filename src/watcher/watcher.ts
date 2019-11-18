@@ -20,6 +20,8 @@ export class Watcher implements IWatcher {
         this._unlink(dirName + '/' + fileName);
 
         await new Promise((resolve, reject) => {
+            let timeout;
+
             this._watcher = fs.watch(dirName, async (eventType: string, changedFileName: string) => {
                 if ((
                         eventType === Watcher.EVENT_RENAME ||
@@ -29,12 +31,13 @@ export class Watcher implements IWatcher {
                     fileName === changedFileName
                 ) {
                     this._watcher.close();
+                    clearTimeout(timeout);
 
                     resolve();
                 }
             });
 
-            setTimeout(() => {
+            timeout = setTimeout(() => {
                 this._watcher.close();
 
                 reject(new WatcherTimeoutError(filePath, time));

@@ -1,6 +1,6 @@
 # node-raspivideo
-[![Build Status](https://travis-ci.org/dlukanin/node-raspivid.svg?branch=master)](https://travis-ci.org/dlukanin/node-raspividl)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/dlukanin/node-raspivid.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/dlukanin/node-raspivid/alerts/)
+[![Build Status](https://travis-ci.org/dlukanin/node-raspivideo.svg?branch=master)](https://travis-ci.org/dlukanin/node-raspivideo)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/dlukanin/node-raspivideo.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/dlukanin/node-raspivideo/alerts/)
 
 Wrapper for [raspivid](https://www.raspberrypi.org/documentation/usage/camera/raspicam/raspivid.md) tool
 for Raspbian OS. Typescript typedefs included.

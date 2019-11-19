@@ -5,6 +5,14 @@
 Wrapper for [raspivid](https://www.raspberrypi.org/documentation/usage/camera/raspicam/raspivid.md) tool
 for Raspbian OS. Typescript typedefs included.
 
+# Install
+
+TODO
+
+# Usage
+
+
+
 # License info
 Lib is MIT licensed.
 

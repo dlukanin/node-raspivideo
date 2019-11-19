@@ -18,5 +18,5 @@ export interface IRaspivid {
 
     setOptions(options: Partial<IRaspividOptions>): void;
 
-    record(videoName: string, time: number, options: IRaspividOptions): Promise<void>;
+    record(videoName: string, time: number, options?: Partial<IRaspividOptions>): Promise<void>;
 }

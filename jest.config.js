@@ -6,6 +6,7 @@ module.exports = {
     coverageReporters: ['lcov'],
     moduleFileExtensions: ['ts', 'js'],
     collectCoverageFrom: [
-        'src/**/*.ts'
+        'src/**/*.ts',
+        '!src/index.ts'
     ]
 };

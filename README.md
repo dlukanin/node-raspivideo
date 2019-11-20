@@ -3,7 +3,7 @@
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/dlukanin/node-raspivideo.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/dlukanin/node-raspivideo/alerts/)
 
 Wrapper for [raspivid](https://www.raspberrypi.org/documentation/usage/camera/raspicam/raspivid.md) tool
-for Raspbian OS. Typescript typedefs included. Includes built in converted to save records in mp4 format.
+for Raspbian OS. Typescript typedefs included. Includes built in converter to save records in mp4 format.
 
 # Reqs
 

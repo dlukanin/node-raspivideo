@@ -34,7 +34,7 @@ raspivid.record('myvideo', 10000)
         console.log('done!');
     })
     .catch((err) => {
-        console.error(err)
+        console.error(err);
     });
 
 ```

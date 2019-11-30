@@ -7,8 +7,8 @@
   "scripts": {
     "test": "jest --runInBand --forceExit -c jest.config.js",
     "build": "rm -rf ./build && tsc --project tsconfig.json",
-    "lint": "tslint --fix src/**/*.ts && tslint src/**/*.ts",
-    "ci-lint": "tslint src/**/*.ts && tslint src/**/*.ts",
+    "lint": "tslint --fix src/**/*.ts && tslint test/**/*.ts",
+    "ci-lint": "tslint src/**/*.ts && tslint test/**/*.ts",
     "coverage": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": {

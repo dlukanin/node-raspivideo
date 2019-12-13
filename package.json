@@ -42,6 +42,7 @@
   },
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.0.20",
+    "cla-mapper": "0.0.1",
     "fluent-ffmpeg": "^2.1.2"
   }
 }

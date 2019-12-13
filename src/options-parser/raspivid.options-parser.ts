@@ -17,6 +17,8 @@ export class RaspividOptionsParser implements IOptionsParser {
         videoFolder: undefined
     };
 
+    // TODO
+    // tslint:disable
     protected readonly _claMapper = new ClaMapper(this._optionMap);
 
     public getCommandLineArgs(options: Partial<IRaspividOptions>): string[] {

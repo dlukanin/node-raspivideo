@@ -1,5 +1,5 @@
 {
-  "name": "node-raspivideo",
+  "name": "node-raspivideo-shyd",
   "version": "1.0.1",
   "description": "Node wrapper for raspbian os raspivid util",
   "main": "build/index.js",

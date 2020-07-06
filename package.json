@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dlukanin/node-raspivideo.git"
+    "url": "git+https://github.com/shyd/node-raspivideo.git"
   },
   "keywords": [
     "raspberry",

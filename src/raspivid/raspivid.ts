@@ -35,7 +35,7 @@ export class Raspivid implements IRaspivid {
         protected readonly _converterFactory: IConverterFactory = new ConverterFactory(),
         protected readonly _optionsParser: IOptionsParser = new RaspividOptionsParser()
     ) {
-        this.setOptions(Object.assign({}, options, this.defaultOptions));
+        this.setOptions(Object.assign({}, this.defaultOptions, options));
     }
 
     public async record(videoName: string, time: number, options: Partial<IRaspividOptions> = {}): Promise<void> {

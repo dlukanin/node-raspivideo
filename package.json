@@ -1,6 +1,6 @@
 {
-  "name": "node-raspivideo",
-  "version": "1.0.0",
+  "name": "node-raspivideo-shyd",
+  "version": "1.0.1",
   "description": "Node wrapper for raspbian os raspivid util",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dlukanin/node-raspivideo.git"
+    "url": "git+https://github.com/shyd/node-raspivideo.git"
   },
   "keywords": [
     "raspberry",

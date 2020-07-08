@@ -30,19 +30,19 @@
   "homepage": "https://github.com/dlukanin/node-raspivideo#readme",
   "devDependencies": {
     "@types/fluent-ffmpeg": "^2.1.11",
-    "@types/jest": "^24.0.20",
-    "@types/node": "^12.11.1",
-    "coveralls": "3.0.7",
-    "jest": "^24.9.0",
+    "@types/jest": "^26.0.4",
+    "@types/node": "^14.0.20",
+    "coveralls": "3.1.0",
+    "jest": "^26.1.0",
     "rimraf": "^3.0.0",
-    "ts-jest": "^24.1.0",
-    "tslint": "^5.20.1",
+    "ts-jest": "^26.1.1",
+    "tslint": "^6.1.2",
     "tslint-eslint-rules": "^5.4.0",
     "typescript": "^3.7.2"
   },
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.0.20",
-    "cla-mapper": "0.0.1",
+    "cla-mapper": "1.0.0",
     "fluent-ffmpeg": "^2.1.2"
   }
 }

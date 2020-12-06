@@ -9,3 +9,4 @@ jest.config.js
 README.md
 tsconfig.json
 tslint.json
+.github

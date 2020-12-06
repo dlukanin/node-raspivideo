@@ -41,8 +41,8 @@
     "typescript": "^3.7.2"
   },
   "dependencies": {
+    "@dlukanin/cla-mapper": "^1.1.0",
     "@ffmpeg-installer/ffmpeg": "^1.0.20",
-    "cla-mapper": "1.0.0",
     "fluent-ffmpeg": "^2.1.2"
   }
 }

@@ -1,5 +1,5 @@
 # node-raspivideo
-[![Build Status](https://travis-ci.org/dlukanin/node-raspivideo.svg?branch=master)](https://travis-ci.org/dlukanin/node-raspivideo)
+![Build status](https://github.com/dlukanin/node-raspivideo/actions/workflows/main.yml/badge.svg)
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/dlukanin/node-raspivideo.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/dlukanin/node-raspivideo/alerts/)
 
 Wrapper for [raspivid](https://www.raspberrypi.org/documentation/usage/camera/raspicam/raspivid.md) tool

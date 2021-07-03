@@ -1,4 +1,4 @@
-import {IRaspividOptions} from '../raspivid/raspivid.interface';
+import { IRaspividOptions } from '../raspivid/raspivid.interface';
 
 export interface IOptions extends IRaspividOptions {
     output: string;

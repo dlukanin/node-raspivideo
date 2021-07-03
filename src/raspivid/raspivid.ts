@@ -1,12 +1,12 @@
-import {IRaspivid, IRaspividOptions} from './raspivid.interface';
-import {IRaspividExecutor} from '../executor/raspivid.executor.interface';
-import {RaspividExecutor} from '../executor/raspivid.executor';
-import {IWatcher} from '../watcher/watcher.interface';
-import {Watcher} from '../watcher/watcher';
-import {ConverterFactory} from '../converter/converter.factory';
-import {RaspividOptionsParser} from '../options-parser/raspivid.options-parser';
-import {IConverterFactory} from '../converter/converter.factory.interface';
-import {IOptionsParser} from '../options-parser/options-parser.interface';
+import { IRaspivid, IRaspividOptions } from './raspivid.interface';
+import { IRaspividExecutor } from '../executor/raspivid.executor.interface';
+import { RaspividExecutor } from '../executor/raspivid.executor';
+import { IWatcher } from '../watcher/watcher.interface';
+import { Watcher } from '../watcher/watcher';
+import { ConverterFactory } from '../converter/converter.factory';
+import { RaspividOptionsParser } from '../options-parser/raspivid.options-parser';
+import { IConverterFactory } from '../converter/converter.factory.interface';
+import { IOptionsParser } from '../options-parser/options-parser.interface';
 
 export class Raspivid implements IRaspivid {
 

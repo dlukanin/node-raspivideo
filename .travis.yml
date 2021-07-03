@@ -3,7 +3,9 @@ sudo: true
 arch:
   - arm64
 node_js:
-  - "10"
+  - "12"
+  - "14"
+  - "16"
 install:
   - npm ci
 script:

@@ -1,4 +1,4 @@
-import {IConverter} from './converter.interface';
+import { IConverter } from './converter.interface';
 
 export class DefaultConverter implements IConverter {
     public readonly convertedFilePostfix: string = '';

@@ -8,7 +8,7 @@ for Raspbian OS. Typescript typedefs included. Includes built in converter to sa
 # Reqs
 
 - Raspberry Pi (tested on 3 version), Raspbian OS with Raspivid lib
-- Node 10+ installed
+- Node 12+ installed
 - Raspberry camera connected to your Pi
 
 # Install

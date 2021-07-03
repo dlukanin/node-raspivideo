@@ -1,15 +1,16 @@
-import {IConverter} from './converter.interface';
+import { IConverter } from './converter.interface';
 import * as ffmpeg from 'fluent-ffmpeg';
 import * as path from 'path';
-import {ConverterError} from './error/converter.error';
+import { ConverterError } from './error/converter.error';
 import * as fs from 'fs';
+import * as ffmpegInstaller from '@ffmpeg-installer/ffmpeg';
 
 export class H264ToMp4Converter implements IConverter {
     public readonly convertedFilePostfix: string = '_converted';
     public readonly ex: string = '.mp4';
 
     constructor() {
-        const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
+        const ffmpegPath = ffmpegInstaller.path;
         ffmpeg.setFfmpegPath(ffmpegPath);
     }
 

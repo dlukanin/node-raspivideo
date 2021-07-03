@@ -1,8 +1,8 @@
-import {IWatcher} from './watcher.interface';
+import { IWatcher } from './watcher.interface';
 import * as path from 'path';
 import * as fs from 'fs';
-import {FSWatcher} from 'fs';
-import {WatcherTimeoutError} from './error/watcher-timeout.error';
+import { FSWatcher } from 'fs';
+import { WatcherTimeoutError } from './error/watcher-timeout.error';
 
 export class Watcher implements IWatcher {
     public static readonly ENOENT: string = 'ENOENT';
@@ -22,18 +22,18 @@ export class Watcher implements IWatcher {
         await new Promise((resolve, reject) => {
             let timeout;
 
-            this._watcher = fs.watch(dirName, async (eventType: string, changedFileName: string) => {
+            this._watcher = fs.watch(dirName, (eventType: string, changedFileName: string) => {
                 if ((
-                        eventType === Watcher.EVENT_RENAME ||
+                    eventType === Watcher.EVENT_RENAME ||
                         eventType === Watcher.EVENT_CHANGE
-                    )
+                )
                     &&
                     fileName === changedFileName
                 ) {
                     this._watcher.close();
                     clearTimeout(timeout);
 
-                    resolve();
+                    resolve(undefined);
                 }
             });
 

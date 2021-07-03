@@ -7,8 +7,8 @@
   "scripts": {
     "test": "jest --runInBand --forceExit -c jest.config.js",
     "build": "rm -rf ./build && tsc --project tsconfig.json",
-    "lint": "tslint --fix src/**/*.ts && tslint test/**/*.ts",
-    "ci-lint": "tslint src/**/*.ts && tslint test/**/*.ts",
+    "lint": "./node_modules/.bin/eslint './src/**/*.ts' --fix",
+    "ci-lint": "./node_modules/.bin/eslint './src/**/*.ts'",
     "coverage": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
@@ -29,19 +29,25 @@
   },
   "homepage": "https://github.com/dlukanin/node-raspivideo#readme",
   "devDependencies": {
-    "@types/fluent-ffmpeg": "^2.1.11",
-    "@types/jest": "^26.0.4",
-    "@types/node": "^14.0.20",
-    "coveralls": "3.1.0",
-    "jest": "^26.1.0",
-    "rimraf": "^3.0.0",
-    "ts-jest": "^26.1.1",
-    "tslint": "^6.1.2",
-    "tslint-eslint-rules": "^5.4.0",
-    "typescript": "^3.7.2"
+    "@types/fluent-ffmpeg": "^2.1.17",
+    "@types/jest": "^26.0.23",
+    "@types/node": "^14.17.4",
+    "coveralls": "^3.1.1",
+    "jest": "^26.6.3",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^26.5.6",
+    "@typescript-eslint/eslint-plugin": "^4.27.0",
+    "@typescript-eslint/eslint-plugin-tslint": "^4.27.0",
+    "@typescript-eslint/parser": "^4.27.0",
+    "eslint": "^7.29.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsdoc": "^35.3.2",
+    "eslint-plugin-prefer-arrow": "^1.2.3",
+    "eslint-plugin-unicorn": "^33.0.1",
+    "typescript": "^4.3.5"
   },
   "dependencies": {
-    "@dlukanin/cla-mapper": "^1.1.0",
+    "@dlukanin/cla-mapper": "^1.2.0",
     "@ffmpeg-installer/ffmpeg": "^1.0.20",
     "fluent-ffmpeg": "^2.1.2"
   }

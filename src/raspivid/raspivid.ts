@@ -9,7 +9,6 @@ import { IConverterFactory } from '../converter/converter.factory.interface';
 import { IOptionsParser } from '../options-parser/options-parser.interface';
 
 export class Raspivid implements IRaspivid {
-
     public readonly defaultOptions: IRaspividOptions = {
         width: 640,
         height: 480,
@@ -18,7 +17,7 @@ export class Raspivid implements IRaspivid {
         format: 'mp4',
         videoFolder: './videos',
         verticalFlip: false,
-        horizontalFlip: false
+        horizontalFlip: false,
     };
 
     public get options(): IRaspividOptions {
@@ -26,6 +25,7 @@ export class Raspivid implements IRaspivid {
     }
 
     protected _options: IRaspividOptions;
+
     protected readonly _executorWatchTimeCoef: number = 100;
 
     constructor(
@@ -33,28 +33,25 @@ export class Raspivid implements IRaspivid {
         protected readonly _executor: IRaspividExecutor = new RaspividExecutor(),
         protected readonly _watcher: IWatcher = new Watcher(),
         protected readonly _converterFactory: IConverterFactory = new ConverterFactory(),
-        protected readonly _optionsParser: IOptionsParser = new RaspividOptionsParser()
+        protected readonly _optionsParser: IOptionsParser = new RaspividOptionsParser(),
     ) {
-        this.setOptions(Object.assign({}, this.defaultOptions, options));
+        this.setOptions({ ...this.defaultOptions, ...options });
     }
 
     public async record(videoName: string, time: number, options: Partial<IRaspividOptions> = {}): Promise<void> {
-        const fileName = videoName.replace('.h264', '') + '.h264';
+        const fileName = `${videoName.replace('.h264', '')}.h264`;
 
-        const output = this._options.videoFolder + '/' + fileName;
+        const output = `${this._options.videoFolder}/${fileName}`;
 
         await Promise.all([
-            this._executor.exec(this._optionsParser.getCommandLineArgs(
-                Object.assign({}, {output, time}, this._options, options))
-            ),
-            this._watcher.watch(output, time + Math.floor(time * this._executorWatchTimeCoef))
+            this._executor.exec(this._optionsParser.getCommandLineArgs({ output, time, ...this._options, ...options })),
+            this._watcher.watch(output, time + Math.floor(time * this._executorWatchTimeCoef)),
         ]);
 
         await this._converterFactory.getConverter(this._options.format).convert(output);
     }
 
     public setOptions(options: Partial<IRaspividOptions>): void {
-        this._options = Object.assign({}, this.options, options);
+        this._options = { ...this.options, ...options };
     }
-
 }

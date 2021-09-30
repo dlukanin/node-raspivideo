@@ -1,13 +1,15 @@
-export class ConverterError extends Error {
-    public readonly info: {converterClass: Function, fileName: string, originalErr: Error};
+import { IConverter } from '../converter.interface';
 
-    constructor(converterClass: Function, fileName: string, originalErr: Error) {
-        super(converterClass.name + ' ' + fileName + ' error: ' + originalErr.message);
+export class ConverterError extends Error {
+    public readonly info: { converterClass: { new (): IConverter }; fileName: string; originalErr: Error };
+
+    constructor(converterClass: { new (): IConverter }, fileName: string, originalErr: Error) {
+        super(`${converterClass.name} ${fileName} error: ${originalErr.message}`);
 
         this.info = {
             converterClass,
             fileName,
-            originalErr
+            originalErr,
         };
     }
 }

@@ -1,8 +1,7 @@
-import {Watcher} from '../../src/watcher/watcher';
-import {rmrf} from '../helpers/rimraf';
-import {RaspividExecutor} from '../../src/executor/raspivid.executor';
 import * as childProcess from 'child_process';
 import { EventEmitter } from 'events';
+import { rmrf } from '../helpers/rimraf';
+import { RaspividExecutor } from '../../src/executor/raspivid.executor';
 
 const filesDir = './files';
 
@@ -28,16 +27,15 @@ describe('Executor', () => {
     it('should spawn proc and resolve', (done) => {
         const args = ['test', '1'];
 
-        const spawnSpy = spyOn(childProcess, 'spawn')
-            .and.callFake((command, args) => {
-                const fake = getFake();
+        const spawnSpy = spyOn(childProcess, 'spawn').and.callFake(() => {
+            const fake = getFake();
 
-                setTimeout(() => {
-                    fake.emit('exit');
-                }, 0);
+            setTimeout(() => {
+                fake.emit('exit');
+            }, 0);
 
-                return fake;
-            });
+            return fake;
+        });
 
         ex.exec(args).then(() => {
             const recentArgs = spawnSpy.calls.mostRecent().args;
@@ -50,17 +48,16 @@ describe('Executor', () => {
     });
 
     it('should spawn proc and reject', (done) => {
-        spyOn(childProcess, 'spawn')
-            .and.callFake((command, args) => {
-                const fake: any = getFake();
+        spyOn(childProcess, 'spawn').and.callFake(() => {
+            const fake: any = getFake();
 
-                setTimeout(() => {
-                    fake.emit('error', {});
-                    fake.emit('exit');
-                }, 0);
+            setTimeout(() => {
+                fake.emit('error', {});
+                fake.emit('exit');
+            }, 0);
 
-                return fake;
-            });
+            return fake;
+        });
 
         ex.exec([]).catch(() => {
             done();
@@ -68,17 +65,16 @@ describe('Executor', () => {
     });
 
     it('should spawn proc and reject (proc stderr)', (done) => {
-        spyOn(childProcess, 'spawn')
-            .and.callFake((command, args) => {
-                const fake: any = getFake();
+        spyOn(childProcess, 'spawn').and.callFake(() => {
+            const fake: any = getFake();
 
-                setTimeout(() => {
-                    fake.stderr.emit('data', Buffer.alloc(1));
-                    fake.emit('exit');
-                }, 0);
+            setTimeout(() => {
+                fake.stderr.emit('data', Buffer.alloc(1));
+                fake.emit('exit');
+            }, 0);
 
-                return fake;
-            });
+            return fake;
+        });
 
         ex.exec([]).catch(() => {
             done();

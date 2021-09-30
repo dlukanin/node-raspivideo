@@ -1,12 +1,13 @@
-import { IConverter } from './converter.interface';
 import * as ffmpeg from 'fluent-ffmpeg';
 import * as path from 'path';
-import { ConverterError } from './error/converter.error';
 import * as fs from 'fs';
 import * as ffmpegInstaller from '@ffmpeg-installer/ffmpeg';
+import { ConverterError } from './error/converter.error';
+import { IConverter } from './converter.interface';
 
 export class H264ToMp4Converter implements IConverter {
     public readonly convertedFilePostfix: string = '_converted';
+
     public readonly ex: string = '.mp4';
 
     constructor() {
@@ -18,7 +19,7 @@ export class H264ToMp4Converter implements IConverter {
         const fileName = path.basename(filePath);
         const dirName = path.dirname(filePath);
 
-        const fullPath = dirName + '/' + fileName.replace('.h264', this.convertedFilePostfix + this.ex);
+        const fullPath = `${dirName}/${fileName.replace('.h264', this.convertedFilePostfix + this.ex)}`;
 
         try {
             await fs.promises.unlink(fullPath);
@@ -26,8 +27,7 @@ export class H264ToMp4Converter implements IConverter {
             // do nothing
         }
 
-        const command = ffmpeg(filePath)
-            .format('mp4');
+        const command = ffmpeg(filePath).format('mp4');
 
         command.save(fullPath);
 
@@ -37,11 +37,7 @@ export class H264ToMp4Converter implements IConverter {
             });
 
             command.on('error', (err) => {
-                reject(new ConverterError(
-                    this.constructor,
-                    fileName,
-                    err
-                ));
+                reject(new ConverterError(H264ToMp4Converter, fileName, err));
             });
         });
     }

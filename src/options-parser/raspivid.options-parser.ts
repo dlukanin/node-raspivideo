@@ -1,6 +1,6 @@
+import { ClaMapper } from '@dlukanin/cla-mapper';
 import { IOptions, IOptionsParser } from './options-parser.interface';
 import { IRaspividOptions } from '../raspivid/raspivid.interface';
-import { ClaMapper } from '@dlukanin/cla-mapper';
 
 export class RaspividOptionsParser implements IOptionsParser {
     private _optionMap: Record<keyof IOptions, string> = {
@@ -14,7 +14,7 @@ export class RaspividOptionsParser implements IOptionsParser {
         time: '-t',
 
         format: undefined,
-        videoFolder: undefined
+        videoFolder: undefined,
     };
 
     // TODO

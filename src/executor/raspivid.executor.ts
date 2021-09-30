@@ -1,5 +1,5 @@
-import { IRaspividExecutor } from './raspivid.executor.interface';
 import * as process from 'child_process';
+import { IRaspividExecutor } from './raspivid.executor.interface';
 
 export class RaspividExecutor implements IRaspividExecutor {
     private readonly _command: string = 'raspivid';

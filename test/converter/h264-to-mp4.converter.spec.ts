@@ -1,8 +1,8 @@
-import {H264ToMp4Converter} from '../../src/converter/h264-to-mp4.converter';
 import * as fs from 'fs';
-import {ConverterError} from '../../src/converter/error/converter.error';
+import { H264ToMp4Converter } from '../../src/converter/h264-to-mp4.converter';
+import { ConverterError } from '../../src/converter/error/converter.error';
 
-const videosDir = __dirname + '/../videos';
+const videosDir = `${__dirname}/../videos`;
 const fileName = 'sample';
 
 describe('H264ToMp4Converter', () => {
@@ -12,8 +12,8 @@ describe('H264ToMp4Converter', () => {
 
     beforeEach(async () => {
         converter = new H264ToMp4Converter();
-        originalFilePath = videosDir + '/' + fileName + '.h264';
-        convertedFilePath = videosDir + '/' + fileName + converter.convertedFilePostfix + converter.ex;
+        originalFilePath = `${videosDir}/${fileName}.h264`;
+        convertedFilePath = `${videosDir}/${fileName}${converter.convertedFilePostfix}${converter.ex}`;
     });
 
     afterEach(async () => {
@@ -34,7 +34,7 @@ describe('H264ToMp4Converter', () => {
         let err;
 
         try {
-            await converter.convert(videosDir + '/nothing-here.h264');
+            await converter.convert(`${videosDir}/nothing-here.h264`);
         } catch (e) {
             err = e;
         }

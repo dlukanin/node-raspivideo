@@ -1,6 +1,6 @@
 {
   "name": "node-raspivideo",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Node wrapper for raspbian os raspivid util",
   "main": "build/index.js",
   "types": "build/index.d.ts",
